@@ -3,6 +3,8 @@
 FEATURES:
 
 * **New Resource**: `opennebula_cluster` (#227)
+* **New Resource**: `opennebula_host` (#300)
+* **New Data source**: `opennebula_host` (#300)
 
 # 1.0.1 (October 3rd, 2022)
 
