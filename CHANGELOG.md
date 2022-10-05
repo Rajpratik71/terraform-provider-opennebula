@@ -1,3 +1,9 @@
+# 1.1.0 (Unreleased)
+
+FEATURES
+
+* **New Data Source**: `opennebula_datastore`: allow filtering based on `name` and `tags` (#299)
+
 # 1.0.1 (October 3rd, 2022)
 
 BUG FIXES:
