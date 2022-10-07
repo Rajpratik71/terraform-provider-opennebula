@@ -97,6 +97,7 @@ func Provider() *schema.Provider {
 			"opennebula_virtual_router":                   resourceOpennebulaVirtualRouter(),
 			"opennebula_virtual_router_nic":               resourceOpennebulaVirtualRouterNIC(),
 			"opennebula_virtual_network_address_range":    resourceOpennebulaVirtualNetworkAddressRange(),
+			"opennebula_datastore":                        resourceOpennebulaDatastore(),
 		},
 
 		ConfigureContextFunc: providerConfigure,
