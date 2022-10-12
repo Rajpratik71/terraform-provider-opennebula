@@ -52,6 +52,14 @@ resource "opennebula_group" "example" {
   tags = {
     environment = "example"
   }
+
+  template_section {
+	  name = "test"
+	  tags = {
+		    tag1 = "value1"
+	    }
+  }
+
 }
 ```
 
@@ -64,6 +72,7 @@ The following arguments are supported:
 * `quotas` - (Optional) See [Quotas parameters](#quotas-parameters) below for details
 * `sunstone` - (Optional) Allow users and group admins to access specific views. See [Sunstone parameters](#sunstone-parameters) below for details
 * `tags` - (Optional) Group tags (Key = value)
+* `template_section` - (Optional) Allow to add a custom vector. See [Template section parameters](#template-section-parameters)
 
 ### Quotas parameters
 
@@ -108,12 +117,19 @@ The following arguments are supported:
 * `running_vms` - (Optional) Number of Virtual Machines allowed in `RUNNING` state. Defaults to `default quota`.
 * `system_disk_size` - (Optional) Maximum disk global size (in MB) allowed on a `SYSTEM` datastore. Defaults to `default quota`.
 
-#### Sunstone parameters
+### Sunstone parameters
 
 * `default_view` - (Optional) Default Sunstone view for regular users
 * `views` - (Optional) List of available views for regular users
 * `group_admin_default_view` - (Optional) Default Sunstone view for group admin users
 * `group_admin_views` - (Optional) List of available views for the group admins
+
+### Template section parameters
+
+`template_section` supports the following arguments:
+
+* `name` - (Optional) The vector name.
+* `tags` - (Optional) Collection of custom tags.
 
 ## Attribute Reference
 

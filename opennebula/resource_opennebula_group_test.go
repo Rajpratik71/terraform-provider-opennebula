@@ -40,6 +40,10 @@ func TestAccGroup(t *testing.T) {
 					resource.TestCheckResourceAttr("opennebula_group.group", "tags.%", "2"),
 					resource.TestCheckResourceAttr("opennebula_group.group", "tags.testkey1", "testvalue1"),
 					resource.TestCheckResourceAttr("opennebula_group.group", "tags.testkey2", "testvalue2"),
+					resource.TestCheckTypeSetElemNestedAttrs("opennebula_group.group", "templace_section.*", map[string]string{
+						"testkey1": "testvalue1",
+						"testkey2": "testvalue2",
+					}),
 				),
 			},
 			{
@@ -67,6 +71,10 @@ func TestAccGroup(t *testing.T) {
 					resource.TestCheckResourceAttr("opennebula_group.group", "tags.%", "2"),
 					resource.TestCheckResourceAttr("opennebula_group.group", "tags.testkey2", "testvalue2"),
 					resource.TestCheckResourceAttr("opennebula_group.group", "tags.testkey3", "testvalue3"),
+					resource.TestCheckTypeSetElemNestedAttrs("opennebula_group.group", "templace_section.*", map[string]string{
+						"testkey2": "testvalue2",
+						"testkey3": "testvalue3",
+					}),
 				),
 			},
 			{
@@ -83,6 +91,10 @@ func TestAccGroup(t *testing.T) {
 					resource.TestCheckResourceAttr("opennebula_group.group", "tags.%", "2"),
 					resource.TestCheckResourceAttr("opennebula_group.group", "tags.testkey2", "testvalue2"),
 					resource.TestCheckResourceAttr("opennebula_group.group", "tags.testkey3", "testvalue3"),
+					resource.TestCheckTypeSetElemNestedAttrs("opennebula_group.group", "templace_section.*", map[string]string{
+						"testkey2": "testvalue2",
+						"testkey3": "testvalue3",
+					}),
 				),
 			},
 			{
@@ -123,6 +135,7 @@ func TestAccGroup(t *testing.T) {
 						"views":                    "cloud",
 					}),
 					resource.TestCheckResourceAttr("opennebula_group.group2", "tags.%", "0"),
+					resource.TestCheckResourceAttr("opennebula_group.group2", "template_section.#", "0"),
 				),
 			},
 		},
@@ -190,6 +203,14 @@ resource "opennebula_group" "group" {
 		testkey1 = "testvalue1"
 		testkey2 = "testvalue2"
 	}
+
+	template_section = {
+		name = "test_vec_key"
+		tags = {
+			testkey1 = "testvalue1"
+			testkey2 = "testvalue2"
+		}
+	}
 }
 `
 
@@ -217,6 +238,14 @@ resource "opennebula_group" "group" {
 		testkey2 = "testvalue2"
 		testkey3 = "testvalue3"
 	}
+
+	template_section = {
+		name = "test_vec_key"
+		tags = {
+			testkey2 = "testvalue2"
+			testkey3 = "testvalue3"
+		}
+	}
 }
 `
 
@@ -243,6 +272,14 @@ resource "opennebula_group" "group" {
 	tags = {
 		testkey2 = "testvalue2"
 		testkey3 = "testvalue3"
+	}
+
+	template_section = {
+		name = "test_vec_key"
+		tags = {
+			testkey2 = "testvalue2"
+			testkey3 = "testvalue3"
+		}
 	}
 }
 `

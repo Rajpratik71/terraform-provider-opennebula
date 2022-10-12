@@ -3,6 +3,7 @@
 FEATURES:
 
 * **New Resource**: `opennebula_cluster` (#227)
+* resources/opennebula_group: add `template_section` to manage vectors with an unique key (#359)
 
 DEPRECATION:
 
